@@ -56,11 +56,11 @@ public class Consumable {
 		this.contact = contact;
 	}
 
-	public String getProdNum() {
+	public String getProductNum() {
 		return productNum;
 	}
 
-	public void setProdNum(String prodNum) {
+	public void setProductNum(String prodNum) {
 		this.productNum = prodNum;
 	}
 

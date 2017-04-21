@@ -1,0 +1,3 @@
+rootProject.name = 'TrackerREST'
+
+includeFlat 'JPATracker'
