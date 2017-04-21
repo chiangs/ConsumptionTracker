@@ -6,4 +6,4 @@ target
 .gradle
 .metadata
 .recommenders/
-.RemoteSystemsTempFiles
+RemoteSystemsTempFiles/
