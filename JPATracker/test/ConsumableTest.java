@@ -39,4 +39,5 @@ public class ConsumableTest {
 	public void test_Consumable_has_consumables() {
 		assertEquals("water", con.getName());
 	}
+	
 }
