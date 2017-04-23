@@ -127,6 +127,7 @@ var createTable = function(data) {
 	var $th6 = $('<th>');
 	var $th7 = $('<th>');
 	var $th8 = $('<th>');
+	var $th9 = $('<th>');
 	var $label = $('.label');
 
 	var $createButton = $('<button type="submit" name="create" class="btn btn-primary">Add +</button>');
@@ -139,11 +140,11 @@ var createTable = function(data) {
 	$th6.text('Cost');
 	$th7.text('Edit');
 	$th8.text('Delete');
-	$($table).append($th1, $th2, $th3, $th4, $th5, $th6, $th7, $th8);
+	$th9.text('Re-order');
+	$($table).append($th1, $th2, $th3, $th4, $th5, $th6, $th7, $th8, $th9);
 	$table.addClass('table table-inverse');
 
-	data
-			.forEach(function(elem) {
+	data.forEach(function(elem) {
 				var $editButton = $('<button type="submit" name="edit" class="btn btn-warning">•</button>');
 				var $deleteButton = $('<button type="submit" name="delete" class="btn btn-danger">x</button>');
 				var $td1 = $('<td>');
@@ -154,6 +155,7 @@ var createTable = function(data) {
 				var $td6 = $('<td>');
 				var $td7 = $('<td>');
 				var $td8 = $('<td>');
+				var $td9 = $('<td>');
 				var $tr = $('<tr>');
 				var current = elem;
 
@@ -167,7 +169,8 @@ var createTable = function(data) {
 				$td7.attr('id', 'editButton');
 				$td8.append($deleteButton);
 				$td8.attr('id', 'deleteButton');
-				$($tr).append($td1, $td2, $td3, $td4, $td5, $td6, $td7, $td8);
+				$td9.append('<a href=mailto:'+elem.contact+'>Re-order</a>');
+				$($tr).append($td1, $td2, $td3, $td4, $td5, $td6, $td7, $td8, $td9);
 				$($table).append($tr);
 
 				createEditForm($editButton, current);
@@ -177,7 +180,8 @@ var createTable = function(data) {
 	sortName($th2);
 	sortNum($th3);
 	sortDesc($th4);
-	sortCost($th5);
+	sortCat($th5);
+	sortCost($th6);
 	clearFooter($label);
 	createAddForm($createButton);
 	$('#content2').append($table);
@@ -190,6 +194,23 @@ var clearFooter = function(label) {
 		$('#footer').empty();
 	});
 }
+
+var sortCat = function(sorter) {
+	sorter.on('click', function(e) {
+		$.ajax({
+			type : 'GET',
+			url : 'api/consumables/sortCat',
+			dataType : 'JSON'
+		}).done(function(data, status) {
+			console.log('Great Success!');
+			createTable(data);
+		}).fail(function(xhr, status, error) {
+			console.log('Darn it');
+			console.log(error);
+		})
+	});
+}
+
 
 var sortNum = function(sorter) {
 	sorter.on('click', function(e) {

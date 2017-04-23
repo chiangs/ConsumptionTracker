@@ -85,18 +85,9 @@ public class ConsumableDAOImpl implements ConsumableDAO {
 		return em.createQuery(query, Consumable.class).getResultList();
 	}
 	
-//	@Override
-//	public double totalCost(String category) {
-//		String query = "SELECT c FROM Consumable c WHERE c.category = :category";
-//		List<Consumable> resultList = em.createQuery(query, Consumable.class).setParameter("category", category).getResultList();
-//		for (int i = 0; i < resultList.size(); i++) {
-//			Object result = resultList[i].cost;
-//		}
-//	}
-	
 	@Override
-	public int itemCount(String category) {
-		String query = "SELECT c FROM Consumable c where c.category = :category";
-		return em.createQuery(query, Consumable.class).setParameter("category", category).getResultList().size();
+	public List<Consumable> sortCat() {
+		String query = "Select c from Consumable c order by c.category";
+		return em.createQuery(query, Consumable.class).getResultList();
 	}
 }

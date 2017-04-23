@@ -102,11 +102,10 @@ public class TrackerController {
 		response.setStatus(200);
 		return condao.sortCost();
 	}
-	
-	@RequestMapping(path = "consumables/item/{category}", method = RequestMethod.GET)
-	public int totalCount(HttpServletRequest request, HttpServletResponse response, @PathVariable String category) {
-		response.setStatus(202);
-		return condao.itemCount(category);
+	@RequestMapping(path = "consumables/sortCat", method = RequestMethod.GET)
+	public List<Consumable> sortCat(HttpServletRequest request, HttpServletResponse response) {
+		response.setStatus(200);
+		return condao.sortCat();
 	}
 	
 }
