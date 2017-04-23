@@ -54,9 +54,33 @@ public class ConsumableDAOImpl implements ConsumableDAO {
 	}
 
 	@Override
-	public List<Consumable> indexProductNum(String pn) {
-		String query = "Select c from Consumable c where c.productNum = :pn";
-		return em.createQuery(query, Consumable.class).setParameter("pn", pn).getResultList();
+	public List<Consumable> sortId() {
+		String query = "Select c from Consumable c order by c.id";
+		return em.createQuery(query, Consumable.class).getResultList();
+	}
+	
+	@Override
+	public List<Consumable> sortName() {
+		String query = "Select c from Consumable c order by c.name";
+		return em.createQuery(query, Consumable.class).getResultList();
+	}
+	
+	@Override
+	public List<Consumable> sortNum() {
+		String query = "Select c from Consumable c order by c.productNum";
+		return em.createQuery(query, Consumable.class).getResultList();
+	}
+	
+	@Override
+	public List<Consumable> sortDesc() {
+		String query = "Select c from Consumable c order by c.description";
+		return em.createQuery(query, Consumable.class).getResultList();
+	}
+	
+	@Override
+	public List<Consumable> sortCost() {
+		String query = "Select c from Consumable c order by c.cost";
+		return em.createQuery(query, Consumable.class).getResultList();
 	}
 
 }

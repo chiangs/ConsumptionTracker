@@ -16,6 +16,14 @@ public interface ConsumableDAO {
 	
 	public boolean destroy(int id);
 	
-	public List<Consumable> indexProductNum(String productNum);
+	public List<Consumable> sortId();
+	
+	public List<Consumable> sortName();
+	
+	public List<Consumable> sortNum();
+	
+	public List<Consumable> sortDesc();
+	
+	public List<Consumable> sortCost();
 	
 }

@@ -76,10 +76,30 @@ public class TrackerController {
 		return condao.destroy(id);
 	}
 	
-	@RequestMapping(path = "consumables/product/{pn}", method = RequestMethod.GET)
-	public List<Consumable> productNumIndex(HttpServletRequest request, HttpServletResponse response, @PathVariable String pn) {
+	@RequestMapping(path = "consumables/sortId", method = RequestMethod.GET)
+	public List<Consumable> sortId(HttpServletRequest request, HttpServletResponse response) {
 		response.setStatus(200);
-		return condao.indexProductNum(pn);
+		return condao.sortId();
+	}
+	@RequestMapping(path = "consumables/sortName", method = RequestMethod.GET)
+	public List<Consumable> sortName(HttpServletRequest request, HttpServletResponse response) {
+		response.setStatus(200);
+		return condao.sortName();
+	}
+	@RequestMapping(path = "consumables/sortNum", method = RequestMethod.GET)
+	public List<Consumable> sortNum(HttpServletRequest request, HttpServletResponse response) {
+		response.setStatus(200);
+		return condao.sortNum();
+	}
+	@RequestMapping(path = "consumables/sortDesc", method = RequestMethod.GET)
+	public List<Consumable> sortDesc(HttpServletRequest request, HttpServletResponse response) {
+		response.setStatus(200);
+		return condao.sortDesc();
+	}
+	@RequestMapping(path = "consumables/sortCost", method = RequestMethod.GET)
+	public List<Consumable> sortCost(HttpServletRequest request, HttpServletResponse response) {
+		response.setStatus(200);
+		return condao.sortCost();
 	}
 	
 	
