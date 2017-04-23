@@ -128,7 +128,7 @@ var createTable = function(data) {
 	var $th7 = $('<th>');
 	var $th8 = $('<th>');
 	var $th9 = $('<th>');
-	var $label = $('.label');
+	var $label = $('.tabbed');
 
 	var $createButton = $('<button type="submit" name="create" class="btn btn-primary">Add +</button>');
 
@@ -182,13 +182,13 @@ var createTable = function(data) {
 	sortDesc($th4);
 	sortCat($th5);
 	sortCost($th6);
-	clearFooter($label);
+	clearForm($label);
 	createAddForm($createButton);
 	$('#content2').append($table);
 	$('#content2').append($createButton);
 }
 
-var clearFooter = function(label) {
+var clearForm = function(label) {
 	label.on('click', function(){
 		console.log('clear it');
 		$('#footer').empty();
@@ -210,7 +210,6 @@ var sortCat = function(sorter) {
 		})
 	});
 }
-
 
 var sortNum = function(sorter) {
 	sorter.on('click', function(e) {
@@ -315,11 +314,11 @@ var destroy = function(button, current) {
 
 var createEditForm = function(editButton, current) {
 	editButton.on('click', function() {
-		$('footer').load('partials.html #editConsumable', function() {
+		$('#footer').load('partials.html #editConsumable', function() {
 			$('#name').attr('value', current.name);
 			$('#productNum').attr('value', current.productNum);
 			$('#description').attr('value', current.description);
-			$('#category').attr('category', current.category);
+			$('#category').attr('value', current.category);
 			$('#cost').attr('value', current.cost);
 			$('#contact').attr('value', current.contact);
 			edit($('#submitEdit'), current);
@@ -367,7 +366,7 @@ var edit = function(submitEdit, current) {
 
 var createAddForm = function(addButton) {
 	addButton.on('click', function() {
-		$('footer').load('partials.html #createConsumable', function() {
+		$('#footer').load('partials.html #createConsumable', function() {
 			var $submitAdd = $('#submitAdd');
 			create($submitAdd);
 		});
