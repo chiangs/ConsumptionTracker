@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +44,7 @@ public class ConsumableDAOImpl implements ConsumableDAO {
 		conManaged.setCost(con.getCost());
 		conManaged.setContact(con.getContact());
 		conManaged.setProductNum(con.getProductNum());
+		conManaged.setCategory(con.getCategory());
 		return conManaged;
 	}
 
@@ -82,5 +84,19 @@ public class ConsumableDAOImpl implements ConsumableDAO {
 		String query = "Select c from Consumable c order by c.cost";
 		return em.createQuery(query, Consumable.class).getResultList();
 	}
-
+	
+//	@Override
+//	public double totalCost(String category) {
+//		String query = "SELECT c FROM Consumable c WHERE c.category = :category";
+//		List<Consumable> resultList = em.createQuery(query, Consumable.class).setParameter("category", category).getResultList();
+//		for (int i = 0; i < resultList.size(); i++) {
+//			Object result = resultList[i].cost;
+//		}
+//	}
+	
+	@Override
+	public int itemCount(String category) {
+		String query = "SELECT c FROM Consumable c where c.category = :category";
+		return em.createQuery(query, Consumable.class).setParameter("category", category).getResultList().size();
+	}
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -102,5 +103,10 @@ public class TrackerController {
 		return condao.sortCost();
 	}
 	
+	@RequestMapping(path = "consumables/item/{category}", method = RequestMethod.GET)
+	public int totalCount(HttpServletRequest request, HttpServletResponse response, @PathVariable String category) {
+		response.setStatus(202);
+		return condao.itemCount(category);
+	}
 	
 }

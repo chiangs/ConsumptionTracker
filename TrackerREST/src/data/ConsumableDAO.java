@@ -2,6 +2,8 @@ package data;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+
 import entities.Consumable;
 
 public interface ConsumableDAO {
@@ -25,5 +27,8 @@ public interface ConsumableDAO {
 	public List<Consumable> sortDesc();
 	
 	public List<Consumable> sortCost();
+	 
+//	public List<Consumable> totalCost(String category);
 	
+	public int itemCount(String category);
 }

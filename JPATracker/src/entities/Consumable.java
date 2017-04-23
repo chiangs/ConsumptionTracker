@@ -22,10 +22,20 @@ public class Consumable {
 	
 	private String productNum;
 	
+	private String category;
+	
 	//gets-sets
 
 	public String getName() {
 		return name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public void setName(String name) {
@@ -67,12 +77,14 @@ public class Consumable {
 	public int getId() {
 		return id;
 	}
-	
-	//toString
 
+	//toString
 	@Override
 	public String toString() {
-		return "Consumable [name=" + name + ", description=" + description + ", cost=" + cost + ", contact=" + contact
-				+ ", prodNum=" + productNum + "]";
+		return "Consumable [id=" + id + ", name=" + name + ", description=" + description + ", cost=" + cost
+				+ ", contact=" + contact + ", productNum=" + productNum + ", category=" + category + "]";
 	}
+	
+
+
 }
