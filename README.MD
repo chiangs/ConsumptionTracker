@@ -29,8 +29,7 @@ If more time were available:
 
 ## How to Execute
 
-- The web-app is hosted on my AWS server: [**here**](http://www.chiangs.ninja:8080/tracker/)
-- Download the entire program as a .war file [**here**](https://github.com/chiangs/TripLight/blob/master/tracker.war)
+- The web-app is hosted on my AWS server: [**here**](http://www.chiangs.ninja:8080/TrackerREST/)
 
 ## Instructions
 
