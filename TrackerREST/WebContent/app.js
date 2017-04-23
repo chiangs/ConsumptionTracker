@@ -360,6 +360,7 @@ var edit = function(submitEdit, current) {
 		}).fail(function(xhr, status, error) {
 			console.log('Darn it');
 			console.log(error);
+			alert('Please check for empty fields and make sure the cost is ##.##');
 		})
 	});
 }
