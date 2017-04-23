@@ -28,7 +28,7 @@ body {
 }
 
 .tabbed > input{
-  display : none;
+  display : none;  
 }
 
 .tabbed > input:not(:checked) + section > div{
@@ -53,21 +53,21 @@ body {
   padding       : 0.5em 0.75em;
   border        : 1px solid #ddd;
   border-radius : 4px;
-  box-shadow    : 0 0 0.5em rgba(0,0,0,0.0625);
-  background    : #fff;
+  box-shadow    : 0 0 0.9em rgba(0,0,0,0.0625);
+  background    : #f7f7f7;
   position : relative;
   z-index  : 1;
 }
 
 .tabbed > section > h1 > label{
     display                 : block;
-    padding                 : 0.25em 0.75em;
+    padding                 : 0.40em 0.5em;
     border                  : 1px solid #ddd;
     border-bottom           : none;
-    border-top-left-radius  : 4px;
-    border-top-right-radius : 4px;
+    border-top-left-radius  : 3px;
+    border-top-right-radius : 3px;
     box-shadow              : 0 0 0.5em rgba(0,0,0,0.0625);
-    background              : #fff;
+    background              : #3CBC8D;
 }
 
 .tabbed > input:first-child + section > h1{
