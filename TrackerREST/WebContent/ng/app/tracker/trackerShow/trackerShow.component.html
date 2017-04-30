@@ -1,0 +1,22 @@
+<div class="focus" ng-hide="vm.editMode">
+<h2>Item: {{vm.consumable.name}}</h2>
+<p>Description: {{vm.consumable.description}}</p>
+<p>Category: {{vm.consumable.category}}</p>
+<p>Cost: {{vm.consumable.cost}}</p>
+<button type="submit" ng-click="vm.backButton()">Back to List</button>
+<button type="submit" ng-click="vm.setEditConsumable()">Edit</button>
+</div>
+
+<div class="editPanel">
+<form class="editForm" ng-show="vm.editMode">
+	<b>Item Name: </b><br><input class="newConsumableInput" type="text" ng-model="vm.editConsumable.name"/><br>
+	<b>Description: </b><br><input class="newConsumableInput" type="text" ng-model="vm.editConsumable.description"/><br>
+	<b>Cost: </b><br><input class="newConsumableInput" type="text" ng-model="vm.editConsumable.cost"/><br>
+	<b>Category: </b><br><input class="newConsumableInput" type="text" ng-model="vm.editConsumable.category"/><br>
+	<b>Product Number: </b><br><input class="newConsumableInput" type="text" ng-model="vm.editConsumable.productNum"/><br>
+	<b>Contact: </b><br><input class="newConsumableInput" type="text" ng-model="vm.editConsumable.contact"/><br>
+	<br>
+	<button type="submit" ng-click="vm.saveButton()">Save</button>
+	<button type="submit" ng-click="vm.cancel()">Cancel</button>
+</form>
+</div>

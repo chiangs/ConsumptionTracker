@@ -35,7 +35,7 @@ public class TrackerController {
 		return condao.index();
 	}
 	
-	@RequestMapping(path = "consumables/{id}", method = RequestMethod.GET)
+	@RequestMapping(path = "consumables/item/{id}", method = RequestMethod.GET)
 	public Consumable show(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
 		response.setStatus(200);
 		return condao.show(id);
@@ -56,7 +56,7 @@ public class TrackerController {
 		}
 	}
 	
-	@RequestMapping(path = "consumables/{id}", method = RequestMethod.PUT)
+	@RequestMapping(path = "consumables/item/{id}", method = RequestMethod.PUT)
 	public Consumable update(HttpServletRequest request, HttpServletResponse response, @PathVariable int id, @RequestBody String jsonQuiz) {
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -71,7 +71,7 @@ public class TrackerController {
 		}
 	}
 	
-	@RequestMapping(path = "consumables/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(path = "consumables/item/{id}", method = RequestMethod.DELETE)
 	public boolean destroy(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
 		response.setStatus(202);
 		return condao.destroy(id);

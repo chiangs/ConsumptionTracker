@@ -1,0 +1,45 @@
+<div>
+<tracker-show consumable="vm.selected" ng-show="vm.selected" go-back="vm.displayTable()" on-update="vm.updateConsumable(consumable)"></tracker-show>
+
+<table class="table" id="table" ng-show="vm.showTable">
+	<thead>
+	<tr scope="row">
+		<th ng-click='sortColumn("id")' ng-class='sortClass("id")'>ID</th> 
+		<th ng-click='sortColumn("name")' ng-class='sortClass("name")'>Name</th>
+		<th ng-click='sortColumn("productNum")' ng-class='sortClass("productNum")'>Product Number</th>
+		<th ng-click='sortColumn("description")' ng-class='sortClass("description")'>Description</th>
+		<th ng-click='sortColumn("category")' ng-class='sortClass("category")'>Category</th>
+		<th ng-click='sortColumn("cost")' ng-class='sortClass("cost")'>Cost</th>
+		<th ng-click='sortColumn("contact")' ng-class='sortClass("contact")'>Re-order</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="c in vm.consumables | orderBy:column:reverse">
+		<td ng-click="vm.displayConsumable(c)">{{c.id}}</td>
+		<td ng-click="vm.displayConsumable(c)">{{c.name}}</td>
+		<td ng-click="vm.displayConsumable(c)">{{c.productNum}}</td>
+		<td ng-click="vm.displayConsumable(c)">{{c.description}}</td>
+		<td ng-click="vm.displayConsumable(c)">{{c.category}}</td>
+		<td ng-click="vm.displayConsumable(c)">{{c.cost}}</td>
+		<td><a href="mailto:{{c.contact}}">{{c.contact}}</a></td>
+		<td><button type="submit" class="btn btn-warning" ng-click="vm.displayConsumable(c)">∆</button></td>
+		<td><button type="submit" class="btn btn-danger" ng-click="vm.deleteConsumable(c)">x</button></td>
+	</tr>
+	</tbody>
+</table>
+</div>
+
+<div id="form">
+<form name="addNewForm" ng-show="vm.showTable">
+	<input class="newConsumableInput" type="text" ng-model="consumable.name" placeholder="Item Name"/><br>
+	<input class="newConsumableInput" type="text" ng-model="consumable.description" placeholder="Item Description"/><br>
+	<input class="newConsumableInput" type="text" ng-model="consumable.cost" placeholder="Item Cost" /><br>
+	<input class="newConsumableInput" type="text" ng-model="consumable.category" placeholder="Item Category"/><br>
+	<input class="newConsumableInput" type="text" ng-model="consumable.productNum" placeholder="Product Number"/><br>
+	<input class="newConsumableInput" type="email" ng-model="consumable.contact" placeholder="Re-order Contact Email" required /><br>
+	<input type="submit" value="AddItem" ng-click="addNewForm.$valid && vm.addToList(consumable); consumable={}"/>
+</form>
+
+</div>
