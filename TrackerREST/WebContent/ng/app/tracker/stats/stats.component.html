@@ -1,16 +1,18 @@
 <div id="summaryTable">
 	<table class="table">
-		<tr class="bold">
-			<td>Category</td>
-			<td>Qty Consumed</td>
-			<td>Total Cost</td>
-		</tr>
-		<tr ng-repeat="c in vm.consumables | unique: 'category'">
-			<td>{{c.category}}</td>
-			<td>{{vm.qtyConsumed(c.category)}}</td>
-			<td ng-class="vm.budgetStatus(c.category)">{{vm.totalCatCost(c.category) | currency:'€ '}}</td>
-		</tr>
-
+		<thead>
+			<tr class="bold">
+				<td>Category</td>
+				<td>Qty Consumed</td>
+				<td>Total Cost</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="c in vm.consumables | unique: 'category'">
+				<td>{{c.category}}</td>
+				<td>{{vm.qtyConsumed(c.category)}}</td>
+				<td ng-class="vm.budgetStatus(c.category)">{{vm.totalCatCost(c.category) | currency:'€ '}}</td>
+			</tr>
+		</tbody>
 	</table>
-
 </div>

@@ -1,28 +1,27 @@
 # Summary
-A web-app for a F&B manager who wishes to check on consumption and re-order. This is a RESTful web-app developed on a MAMP stack consisting of the Java JPA API, the Spring framework with REST and AJAX, JavaScript/jQuery and a MySQL database. The user is able to manipulate data from the databse and create, update, delete, and review overall tracking statistics which are updated asynchronously based on user input.
+A web-app for a F&B manager who wishes to check on consumption and re-order. This is a RESTful web-app developed on a MAMP stack consisting of the Java JPA API, the Spring framework with REST and AJAX, JavaScript/jQuery and a MySQL database. The user is able to manipulate data from the databse and create, update, delete, and review overall tracking statistics which are updated asynchronously based on user input. **This app was refactored with AngularJS on 30 April 2017**.
 
 I also wrote basic JUnit tests to ensure proper mapping of the entities as well as the basic routes to ensure the right data was being requested and returned. Form validation for the cost field was implemented to ensure that it was a number type data and rounded to 2 decimals.
 
-This is the first I have attempted to implement a RESTful app with a database.
+This was the first I have attempted to implement a RESTful app with a database.
 
 Issues I ran into:
 - Basic CRUD and sorting of data was easy, however, the aggregation of statistics required additional JavaScript and jQuery support to properly manipulate and pass on to different functions and listeners in the appropriate sequence to account for the asynchronous nature of the web-app.
 
+**The difficulty in sorting and manipulating data was significantly reduced after refactoring with AngularJS by building functions that took the category directly and used AngularJS sorting methods.**
+
 If more time were available:
-    - Form logic for all fields of the form.
+    - Fuzzy Search.
     - Login/Logout.
-    - Importing a chart library to provide visual support to the user
-    - Additional data fields
+    - Importing a chart library to provide visual support to the user such as ChartJS.
+    - Additional data fields such as date or a second layer of quantity (e.g., 2 pallets of 60 cartons).
 
 <p align="center">
 <img src="readmeimages/scrn1.png" height="245">
 <img src="readmeimages/scrn2.png" height="245"></p>
 <p align="center">
 <img src="readmeimages/scrn3.png" height="245">
-<img src="readmeimages/scrn4.png" height="245"></p>
-<p align="center">
-<img src="readmeimages/scrn5.png" height="245">
-</p>
+<p>
 
 1. [How to Execute](#how-to-execute)
 2. [Code Example](#code-examples)
@@ -67,6 +66,58 @@ var getCount = function(category, data) {
 }
 ```
 
+Here is the same functionality refactored to AngularJS, which was moved to the HTML side and then 2 simple functions were written in the controller for the other two categories of the summary table in addition to a ng-class that dynamically responds to a total cost per category to visually assist the user.
+```html
+<div id="summaryTable">
+	<table class="table">
+		<thead>
+			<tr class="bold">
+				<td>Category</td>
+				<td>Qty Consumed</td>
+				<td>Total Cost</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="c in vm.consumables | unique: 'category'">
+				<td>{{c.category}}</td>
+				<td>{{vm.qtyConsumed(c.category)}}</td>
+				<td ng-class="vm.budgetStatus(c.category)">{{vm.totalCatCost(c.category) | currency:'€ '}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+```
+```JavaScript
+vm.qtyConsumed = function(category) {
+			var counter = 0;
+			for (var i = 0; i < vm.consumables.length; i++) {
+				if (vm.consumables[i].category == category) {
+					counter++;
+				}
+			}
+			return counter;
+		}
+
+		vm.totalCatCost = function(category) {
+			var total = 0;
+			for (var i = 0; i < vm.consumables.length; i++) {
+				if (vm.consumables[i].category == category) {
+					total = total + vm.consumables[i].cost;
+				}
+			}
+			return total;
+		}
+
+		vm.budgetStatus = function(category) {
+			var totalCost = vm.totalCatCost(category);
+			if (totalCost > 200)
+				return 'danger';
+			if (totalCost > 90)
+				return 'warning';
+			return 'safe';
+		}
+```
+
 ## Technologies Used
 
 - Java JPA API
@@ -77,3 +128,4 @@ var getCount = function(category, data) {
 - HTML
 - CSS and Bootstrap
 - JavaScript / jQuery
+- AngularJS
