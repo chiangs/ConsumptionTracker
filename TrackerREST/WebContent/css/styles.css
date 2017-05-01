@@ -40,6 +40,14 @@ body {
 	font-weight: bold;
 }
 
+#search {
+	height: 55px;
+	border-radius: 0;
+	font-weight: bold;
+	font-size: 20px;
+	
+}
+
 #title {
 	background-color: black;
 	color: white;

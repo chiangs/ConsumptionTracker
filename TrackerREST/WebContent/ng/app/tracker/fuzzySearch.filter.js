@@ -1,14 +1,19 @@
-//angular.module('fuzzy')
-//.filter('fuzzySearch', function() {
-//  return function(consumable, text) {
-//    if (!text) return consumables;
-//    var results = [];
-//    consumables.forEach(function(consumable) {
-//      if(consumable.name.toLowerCase().includes(text.toLowerCase())) {
-//        results.push(consumable);
-//      }
-//    }) // end forEach
-//    return results;
-//  }
-//  // end function
-//})
+angular.module('appModule')
+.filter('fuzzySearch', function() {
+  return function(list, text) {
+    if (!text) return list;
+    var results = [];
+    list.forEach(function(consumable) {
+    	for (var p in consumable) {
+//    		if (typeof consumable[p] !== 'string') {
+//    			continue;
+//    		}
+    		if(String (consumable[p]).toLowerCase().includes(text.toLowerCase())) {
+    			return results.push(consumable);
+    		}
+    	}
+    }) // end forEach
+    return results;
+  }
+  // end function
+})

@@ -1,6 +1,6 @@
 <div>
 <tracker-show consumable="vm.selected" ng-show="vm.selected" go-back="vm.displayTable()" on-update="vm.updateConsumable(consumable)"></tracker-show>
-
+<input id="search" class="form-control" type="text" ng-model="search" ng-show="vm.showTable" placeholder="Search by keyword"/>
 <table class="table" id="table" ng-show="vm.showTable">
 	<thead>
 	<tr scope="row">
@@ -16,7 +16,7 @@
 	</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="c in vm.consumables | orderBy:column:reverse">
+	<tr ng-repeat="c in vm.consumables | fuzzySearch:search | orderBy:column:reverse">
 		<td ng-click="vm.displayConsumable(c)">{{c.id}}</td>
 		<td ng-click="vm.displayConsumable(c)">{{c.name}}</td>
 		<td ng-click="vm.displayConsumable(c)">{{c.productNum}}</td>
