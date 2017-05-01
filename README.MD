@@ -11,7 +11,6 @@ Issues I ran into:
 **The difficulty in sorting and manipulating data was significantly reduced after refactoring with AngularJS by building functions that took the category directly and used AngularJS sorting methods.**
 
 If more time were available:
-    - Fuzzy Search.
     - Login/Logout.
     - Importing a chart library to provide visual support to the user such as ChartJS.
     - Additional data fields such as date or a second layer of quantity (e.g., 2 pallets of 60 cartons).
@@ -32,8 +31,8 @@ If more time were available:
 
 ## Instructions
 
-1. User arrives on summary page to see Overview of Consumption by category.
-2. Second tab allows user to add/delete/edit/sort the entire list of items where data is returned without refreshing page.
+1. User arrives on consumption list page to create, edit, delete items and search by keyword.
+2. Second tab allows user look at an overview by category. The total costs are dynamically color-coded to assist the user to analyze consumption.
 
 ## Code Examples
 

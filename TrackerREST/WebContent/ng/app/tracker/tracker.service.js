@@ -1,7 +1,7 @@
 angular.module('tracker').factory('trackerService',function($http,  $filter) {
 	var service = {};
 
-	var BASE_URL = 'http://localhost:8080/TrackerREST/api/consumables';
+	var BASE_URL = 'api/consumables';
 
 	var todos = [];
 	
