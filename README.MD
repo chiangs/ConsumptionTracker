@@ -11,9 +11,9 @@ Issues I ran into:
 **The difficulty in sorting and manipulating data was significantly reduced after refactoring with AngularJS by building functions that took the category directly and used AngularJS sorting methods.**
 
 If more time were available:
-    - Login/Logout.
-    - Importing a chart library to provide visual support to the user such as ChartJS.
-    - Additional data fields such as date or a second layer of quantity (e.g., 2 pallets of 60 cartons).
+- Login/Logout.
+- Importing a chart library to provide visual support to the user such as ChartJS.
+- Additional data fields such as date or a second layer of quantity (e.g., 2 pallets of 60 cartons).
 
 <p align="center">
 <img src="readmeimages/scrn1.png" height="245">
